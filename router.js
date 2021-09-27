@@ -33,6 +33,18 @@ router.get('/edit/:id', (req, res) => {
         }       
     })
 });
+
+// Ruta para eliminar un usuario
+router.get('/delete/:id', (req, res) => {
+    const id = req.params.id; // obteniendo el id del usuario a eliminar
+    conexion.query('DELETE FROM users WHERE id = ?', [id], (err, result) => {
+        if (err){
+            throw err;
+        }else{
+            res.redirect('/'); // redireccionando al index
+        }
+    });
+});
  
 const crud = require('./controllers/crud'); // llamando al controlador crud
 router.post('/save', crud.save); // post para guardar un nuevo usuario
