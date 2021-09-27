@@ -21,4 +21,7 @@ router.get('/create', (req, res) => {
     res.render('create'); // renderizando la pagina create
 })
  
+const crud = require('./controllers/crud'); // llamando al controlador crud
+router.post('/save', crud.save); // post para guardar un nuevo usuario
+
 module.exports = router; // exportando el router
