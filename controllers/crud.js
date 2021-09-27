@@ -11,3 +11,17 @@ exports.save = (req, res) => {
         }
     });
 }
+
+exports.update = (req, res) => {
+    const id = req.body.id;
+    const user = req.body.user;
+    const rol = req.body.rol;
+    conexion.query('UPDATE users SET ? WHERE users.id = ?', [{user:user, rol:rol}, id], (err, result) => {
+        if(err) {
+            console.log(err);
+        }else{
+            res.redirect('/');
+            console.log('actualizado', user + ' ' + rol + ' ' + id);
+        }
+    });
+}
