@@ -4,7 +4,7 @@ const router = express.Router(); // llamando al router de express
 const conexion = require('./database/db'); // llamando a la conexion a la base de datos
 
 router.get('/', (req, res) => { // get para contacto
-    res.render('index', {var1: 'Hola mundo'}); // renderizando la vista index
+    res.render('index'); // renderizando la vista index
     // conexion.query('SELECT * FROM users', (err, result) => {
     //     if (err){
     //         throw err;
