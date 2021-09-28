@@ -13,7 +13,18 @@ router.get('/', (req, res) => { // get para contacto
             res.render('index', {result: result}) // renderizando la pagina index con el resultado de la consulta
         }
     });
+});
 
+router.get('/data', (req, res) => { // get para contacto
+    
+    conexion.query('SELECT * FROM users', (err, result) => {
+        if (err){
+            throw err;
+        }else{
+            data = JSON.stringify(result);
+            res.send(data); // renderizando la pagina index con el resultado de la consulta
+        }
+    });
 });
 
 // Ruta para crear un nuevo usuario
